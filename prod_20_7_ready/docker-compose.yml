@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    container_name: mysite_prod
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_DEBUG: "1"
+      DJANGO_ALLOWED_HOSTS: "*"
+      DJANGO_SECRET_KEY: "django-prod-change-me"
+    volumes:
+      - django_uploads:/app/mysite/uploads
+
+volumes:
+  django_uploads:
